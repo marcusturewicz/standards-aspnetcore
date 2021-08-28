@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore -c Release
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal -c Release
     - name: Pack
       run: dotnet pack src/Standards.AspNetCore -c Release --no-build
     - name: Push to GitHub Package Registry
