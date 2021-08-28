@@ -27,7 +27,7 @@ namespace Standards.AspNetCore.Tests.TestServer
         {
 
             services.AddControllers(options => {
-                options.ModelBinderProviders.Insert(0, new Iso8601DateProvider());
+                options.ModelBinderProviders.Insert(0, new IsoDateModelBinderProvider());
             });
         }
 

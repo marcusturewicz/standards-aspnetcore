@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace Standards.AspNetCore
 {
-    public class Iso8601Date : IModelBinder
+    public class IsoDateModelBinder : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
@@ -32,7 +32,7 @@ namespace Standards.AspNetCore
         }      
     }
 
-    public class Iso8601DateProvider : IModelBinderProvider
+    public class IsoDateModelBinderProvider : IModelBinderProvider
     {
         public IModelBinder GetBinder(ModelBinderProviderContext context)
         {
@@ -43,7 +43,7 @@ namespace Standards.AspNetCore
 
             if (context.Metadata.ModelType == typeof(DateTime))
             {
-                return new BinderTypeModelBinder(typeof(Iso8601Date));
+                return new BinderTypeModelBinder(typeof(IsoDateModelBinder));
             }
 
             return null;

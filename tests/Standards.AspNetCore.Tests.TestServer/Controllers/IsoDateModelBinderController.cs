@@ -7,10 +7,10 @@ namespace Standards.AspNetCore.Tests
 {
     [ApiController]
     [Route("[controller]")]
-    public class Iso8601DateController : ControllerBase
+    public class IsoDateModelBinderController : ControllerBase
     {
         [HttpGet("attribute")]
-        public IActionResult GetAttribute([ModelBinder(BinderType = typeof(Iso8601Date))] DateTime date)
+        public IActionResult GetAttribute([ModelBinder(BinderType = typeof(IsoDateModelBinder))] DateTime date)
         {
             return Ok();
         }
