@@ -2,10 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <PackageId>Standards.AspNetCore</PackageId>
+    <Authors>Marcus Turewicz</Authors>
+    <Description>Library of standards implemented to use in ASP.NET Core</Description>
+    <Copyright>Copyright (c) Marcus Turewicz 2021</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>standards iso dates api</PackageTags>
+    <!-- <PackageIcon>logo.png</PackageIcon> -->
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+</PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>  
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.231" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- <ItemGroup>
+    <None Include="..\..\logo.png" Pack="true" PackagePath=""/>
+  </ItemGroup>   -->
 
 </Project>
