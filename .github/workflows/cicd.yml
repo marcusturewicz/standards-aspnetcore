@@ -1,25 +1,35 @@
 name: CI/CD
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  push:
+    branches: [main]
+    tags: [v*]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        source-url: https://nuget.pkg.github.com/marcusturewicz/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}                
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore -c Release
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Pack
+      run: dotnet pack src/Standards.AspNetCore -c Release --no-build
+    - name: Push to GitHub Package Registry
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
+      run: dotnet nuget push src/Standards.AspNetCore/bin/Release/*.nupkg    
+    - name: Push to nuget.org   
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/tags')         
+      run: dotnet nuget push src/Standards.AspNetCore/bin/Release/*.nupkg -k ${{secrets.NUGET_ORG_API_KEY}} -s https://api.nuget.org/v3/index.json
