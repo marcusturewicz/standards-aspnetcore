@@ -34,7 +34,7 @@ Useful for ensuring consistent Date format contracts in RESTful APIs. `IsoDateMo
 
 1. In single Controller actions:
 
-```chsarp
+```cs
 [HttpGet]
 public IActionResult Get([ModelBinder(typeof(IsoDateModelBinder))] DateTime date) {
     return Ok("Date is in ISO format");
@@ -43,7 +43,7 @@ public IActionResult Get([ModelBinder(typeof(IsoDateModelBinder))] DateTime date
 
 2. Set globally in the application via Startup:
 
-```chsarp
+```cs
 public override void ConfigureServices(IServiceCollection services) {
     services.AddControllers(options => {
         options.ModelBinderProviders.Insert(0, new IsoDateModelBinderProvider());
