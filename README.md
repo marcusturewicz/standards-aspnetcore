@@ -23,7 +23,7 @@ Standards.AspNetCore currently targets .NET 5.0+.
 Standards.AspNetCore is available as a [NuGet package](https://www.nuget.org/packages/Standards.AspNetCore). Install from nuget.org:
 
 ```
-dotnet add package Standards.AspNetCore --version 1.0.0-alpha.2
+dotnet add package Standards.AspNetCore --version 1.0.0-alpha.3
 ```
 
 ## Features
