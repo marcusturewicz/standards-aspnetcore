@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Standards.AspNetCore</PackageId>
@@ -7,9 +6,8 @@
     <Description>Library of standards implemented to use in ASP.NET Core</Description>
     <Copyright>Copyright (c) Marcus Turewicz 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>standards iso dates api</PackageTags>
-    <!-- <PackageIcon>logo.png</PackageIcon> -->
-
+    <PackageTags>standards iso dates api aspnetcore</PackageTags>
+    <PackageIcon>logo.png</PackageIcon>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -25,8 +23,8 @@
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.231" PrivateAssets="All" />
   </ItemGroup>
 
-  <!-- <ItemGroup>
+  <ItemGroup>
     <None Include="..\..\logo.png" Pack="true" PackagePath=""/>
-  </ItemGroup>   -->
+  </ItemGroup>
 
 </Project>

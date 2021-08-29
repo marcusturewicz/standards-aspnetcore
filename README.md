@@ -1,4 +1,4 @@
-# Standards.AspNetCore
+<p align="center"><a href="https://github.com/marcusturewicz/Standards.AspNetCore"><img src="logo.png" alt="Standards.AspNetCore logo"/></a></p>
 
 <p align="center">Library of standards implemented to use in ASP.NET Core.</p>
 
