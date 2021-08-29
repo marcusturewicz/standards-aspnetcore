@@ -16,14 +16,14 @@ For example, it provides convenient abstractions for enforcing `DateTime` object
 
 ## Compatibility
 
-Standards.AspNetCore currently targets .NET 5.0+.
+Standards.AspNetCore currently targets .NET Core 3.1+. We follow the .NET Core support policy and therefore support only the LTS versions. When an LTS version goes out of support, we will update the major version of the library, drop support for the previous LTS version, and only target the next LTS version.
 
 ## Getting Started
 
 Standards.AspNetCore is available as a [NuGet package](https://www.nuget.org/packages/Standards.AspNetCore). Install from nuget.org:
 
 ```
-dotnet add package Standards.AspNetCore --version 1.0.0-alpha.3
+dotnet add package Standards.AspNetCore --version 1.0.0-alpha.4
 ```
 
 ## Features
