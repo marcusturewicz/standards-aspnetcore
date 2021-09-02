@@ -1,15 +1,11 @@
 using Xunit;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Standards.AspNetCore.Tests.TestServer;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace Standards.AspNetCore.Tests
 {
@@ -49,17 +45,29 @@ namespace Standards.AspNetCore.Tests
         [InlineData("21.08.2021", "provider", HttpStatusCode.BadRequest)]
         [InlineData("2021.08.21", "provider", HttpStatusCode.BadRequest)]
         [InlineData("2021.21.08", "provider", HttpStatusCode.BadRequest)]
-
         public async Task AttributeTests(string date, string route, HttpStatusCode expectedStatusCode)
         {
             // Arrange
             using var client = _factory.CreateClient();
 
             // Act
-            var response = await client.GetAsync($"/IsoDateModelBinder/{route}?date={date}");
+            using var response = await client.GetAsync($"/IsoDateModelBinder/{route}?date={date}");
 
             // Assert
+            if (expectedStatusCode != HttpStatusCode.OK)
+            {
+                using var responseStream = await response.Content.ReadAsStreamAsync();
+                var problem = await JsonSerializer.DeserializeAsync<ProblemDetails>(responseStream);
+                var error = JsonSerializer.Deserialize<Error>(problem.Extensions["errors"].ToString());
+                Assert.Equal("Invalid date; must be in ISO-8601 format i.e. YYYY-MM-DD.", error.Date[0]);
+            }
             Assert.Equal(expectedStatusCode, response.StatusCode);
         }        
+    }
+
+    public class Error
+    {
+        [JsonPropertyName("date")]
+        public string[] Date { get; set; }
     }
 }

@@ -6,6 +6,17 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace Standards.AspNetCore
 {
+    /// <summary>
+    /// An ASP.NET Core model binder to enforce ISO-8601 (YYYY-MM-DD) format for <see cref="System.DateTime"/> objects.
+    /// <example>For example, apply to a Controller action:
+    /// <code>
+    /// [HttpGet]
+    /// public IActionResult Get([ModelBinder(typeof(IsoDateModelBinder))] DateTime date) {
+    ///     return Ok("Date is in ISO format!");
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
     public class IsoDateModelBinder : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
@@ -32,6 +43,18 @@ namespace Standards.AspNetCore
         }      
     }
 
+    /// <summary>
+    /// An ASP.NET Core model binder provider to enforce ISO-8601 (YYYY-MM-DD) format for <see cref="System.DateTime"/> objects.
+    /// <example>For example, apply globally in ASP.NET Core Startup.cs:
+    /// <code>
+    /// public override void ConfigureServices(IServiceCollection services) {
+    ///     services.AddControllers(options => {
+    ///         options.ModelBinderProviders.Insert(0, new IsoDateModelBinderProvider());
+    ///     })
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
     public class IsoDateModelBinderProvider : IModelBinderProvider
     {
         public IModelBinder GetBinder(ModelBinderProviderContext context)
