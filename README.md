@@ -16,7 +16,7 @@ For example, it provides convenient abstractions for enforcing `DateTime` object
 
 ## Compatibility
 
-Standards.AspNetCore currently targets .NET Core 3.1+. We follow the .NET Core support policy and therefore support only the LTS versions. When an LTS version goes out of support, we will update the major version of the library, drop support for the previous LTS version, and only target the next LTS version.
+Standards.AspNetCore currently targets .NET 6+. We follow the .NET Core support policy and therefore support only the LTS versions. When an LTS version goes out of support, we will update the major version of the library, drop support for the previous LTS version, and only target the next LTS version.
 
 ## Getting Started
 
